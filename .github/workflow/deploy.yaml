@@ -8,6 +8,8 @@ on:
 env:
   IMAGE: express-app
   DEPLOYMENT_NAME: express-deployment
+  ZONE: us-east1-b
+  CLUSTER_NAME: temp-cluster
 
 jobs:
   setup-build-publish-deploy:
