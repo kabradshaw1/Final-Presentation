@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 7000;
 const secretMessage = process.env.SECRET_MESSAGE || 'No secret message defined';
 
 // Load environment variables from .env file in development
