@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: app/v1
 kind: Deployment
 metadata:
   name: express-deployment
@@ -15,4 +15,23 @@ metadata:
         ports:
         - containerPort: 3000
         env:
-        - name: 
+        - name: SECRET_MESSAGE
+          valueFrom:
+            secretKeyRef:
+              name: express-secret
+              key: secret-message
+      imagePullSecrets:
+        - name: gcr-json-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-service
+spec:
+  selector:
+    app: express-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
