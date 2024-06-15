@@ -40,7 +40,7 @@ jobs:
     - name: Configure Docker
       run: |
         gcloud --quiet auth configure-docker
-        
+
     - name: Get cluster credentials
       run: |
         gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --zone ${{ env.ZONE }} --project ${{ env.PROJECT_ID }}
@@ -69,6 +69,6 @@ jobs:
     # Deploy the Docker image to the GKE cluster changing things
     - name: Deploy
       run: |
-        kubectl set image deployment/$DEPLOYMENT_NAME auth=gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA --record
+        kubectl set image deployment/$DEPLOYMENT_NAME express-app=gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA --record
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
