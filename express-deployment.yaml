@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: express-app
-        image: gcr.io/gvgamers/express:latest
+        image: gcr.io/your-project-id/express-app:latest
         ports:
         - containerPort: 3000
         env:
@@ -25,7 +25,7 @@ spec:
               name: express-secret
               key: secret-message
       imagePullSecrets:
-        - name: gcr-json-key
+      - name: gcr-json-key
 ---
 apiVersion: v1
 kind: Service
