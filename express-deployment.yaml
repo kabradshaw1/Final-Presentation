@@ -1,9 +1,13 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: express-deployment
   labels:
     app: express-app
+spec:
+  selector:
+    matchLabels:
+      app: express-app
   template:
     metadata:
       labels:
